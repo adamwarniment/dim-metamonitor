@@ -1,0 +1,32 @@
+{
+    "name": "DIM - Meta Monitor",
+    "description": "Get Desitny 2 Meta Ranks for Weapons",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "./background.js",
+        "type": "module"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs",
+        "offscreen"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "./popup/index.html"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://api.stracker.gg/*"],
+          "js": ["./content_scripts/insights.js"]
+        }
+    ]
+}
